@@ -31,7 +31,7 @@ class Persons extends Component {
     render () {
         return (
             <div>
-                <AddPerson personAdded={() => this.props.onAddPerson('Max', Math.floor( Math.random() * 40))} />
+                <AddPerson personAdded={this.props.onAddPerson} />
                 {this.props.persons.map(person => (
                     <Person 
                         key={person.id}
@@ -52,7 +52,7 @@ const mapStateToProps = reducer => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAddPerson: (name, age) => dispatch({type: 'ADD', name:name, age:age}),
+        onAddPerson: (name, age) => dispatch({type: 'ADD', personData: { name:name, age:age} }),
         onDeletePerson: (id) => dispatch({type: 'DELETE', personId: id})
     }
 }
